@@ -1,0 +1,3 @@
+@function s($value) {
+    @return calc(#{$value} * var(--s));
+}

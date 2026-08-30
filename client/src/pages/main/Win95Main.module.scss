@@ -1,0 +1,542 @@
+/*███████████████ GENERAL ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+@use "./../../styles/functions" as *;
+
+
+$main-light: rgb(245, 245, 230);
+$main-normal: rgb(220, 220, 200);
+$main-dark: rgb(165, 165, 150);
+
+$black-normal: rgb(0, 0, 0);
+
+$white-normal: rgb(255, 255, 255);
+
+$accent-normal: rgb(0, 0, 128);
+
+$bg-light: rgb(0, 140, 255);
+$bg-dark: rgb(0, 60, 120);
+
+
+
+:export {
+    mainNormal: $main-normal;
+    mainNormalA0: rgba($main-normal, 0);
+
+    blackNormal: $black-normal;
+
+    whiteNormal: $white-normal;
+
+    accentNormal: $accent-normal;
+}
+
+
+
+@mixin p-font {
+    font-family: "VCR OSD", "Pixellary", sans-serif;
+    font-size: s(17px);
+    font-weight: 400;
+}
+
+@mixin window {
+    box-sizing: border-box;
+
+    background-color: $main-normal;
+    border: s(4px) solid;
+    border-color: $main-light $main-dark $main-dark $main-light;
+}
+
+@mixin button {
+    @include window;
+
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:active {
+        padding: s(4px) 0 0 s(4px);
+
+        border-style: solid none none solid;
+        border-color: $main-dark $main-normal $main-normal $main-dark;
+    }
+}
+
+@mixin sidebar-window-item {
+    width: 100%;
+    height: s(36px);
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+
+    border-bottom: s(2px) solid $black-normal;
+}
+
+
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    
+    display: flex;
+    justify-content: flex-start;
+
+    background-color: $black-normal;
+}
+
+.window-padding-container {
+    padding: s(4px);
+    min-width: 0;
+    min-height: 0;
+    
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.inner-window-wrapper {
+    width: calc(100% - s(8px));
+    min-height: 0;
+    margin: s(8px) s(4px) s(4px) s(4px);
+    
+    display: flex;
+    flex-grow: 1;
+
+    position: relative;
+}
+
+.inner-window {
+    @include window;
+
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: $white-normal;
+    border-color: $main-dark $main-light $main-light $main-dark;
+    white-space: pre;
+    overflow: hidden;
+}
+
+.p-font {
+    @include p-font;
+
+    position: relative;
+
+    margin: s(6px);
+    padding: 0;
+
+    color: rgb(0, 0, 0);
+    white-space: pre-wrap;
+    z-index: 2;
+}
+
+.p-font-bold {
+    @include p-font;
+
+    font-family: "VCR OSD", "Pixellary", sans-serif;
+    font-weight: 600;
+    font-size: s(16px);
+}
+
+.namebox-bg {
+    width: 400%;
+    height: 100%;
+
+    position: absolute;
+
+    background: linear-gradient(90deg,
+        rgba($accent-normal, 0), rgba($accent-normal, 0.2) 12.5%, $accent-normal 37.5%, $accent-normal 62.5%, rgba($accent-normal, 0.2) 87.5%, rgba($accent-normal, 0)
+    );
+}
+
+
+
+
+
+/*███████████████ BACKGROUND █████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.container-bg {
+    width: 100%;
+    height: 100%;
+
+    background-color: $bg-dark;
+
+    position: absolute;
+
+    z-index: 0;
+}
+
+.bg-blob {
+    width: s(300px);
+    height: s(300px);
+
+    position: absolute;
+
+    background-color: $bg-light;
+    border-radius: s(150px);
+    filter: blur(s(75px));
+}
+
+
+
+
+
+/*███████████████ SIDEBAR ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.sidebar-container {
+    width: s(400px);
+    height: 100%;
+    
+    display: flex;
+
+    z-index: 1;
+}
+
+    .sidebar-inner-container {
+        width: calc(100% - s(140px));
+        height: calc(100% - s(140px));
+        margin: s(70px);
+    }
+
+        .sidebar {
+            @include window;
+
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+
+            overflow: hidden;
+        }
+
+            .namebox {
+                width: 100%;
+                height: s(40px);
+
+                position: relative;
+
+                display: flex;
+                flex-shrink: 0;
+
+                overflow: hidden;
+            }
+
+                .namebox-text-container {
+                    display: flex;
+                    flex-grow: 1;
+                    align-items: center;
+                }
+
+                    .namebox-font {
+                        margin: s(4px) 0 0 s(8px);
+                        padding: 0;
+
+                        color: $main-normal;
+                        font-family: "Pixellari", "VCR OSD", sans-serif;
+                        font-size: s(20px);
+                        font-weight: 400;
+
+                        z-index: 1;
+                    }
+
+                .namebox-buttons-container {
+                    width: s(80px);
+                    height: 100%;
+                    
+                    display: flex;
+                }
+
+                    .namebox-button-left-container, .namebox-button-right-container {
+                        width: s(32px);
+                        height: s(32px);
+
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: flex-start;
+
+                        margin: s(4px);
+
+                        z-index: 1;
+                    }
+
+                    .namebox-button-right-container {
+                        justify-content: flex-end;
+                        align-items: flex-end
+                    }
+
+                        .namebox-button {
+                            @include button;
+                        }
+
+                            .namebox-button-arrow-left {
+                                width: 0;
+                                height: 0;
+
+                                border-top: s(8px) solid rgba(0, 0, 0, 0);
+                                border-bottom: s(8px) solid rgba(0, 0, 0, 0);
+                                border-right: s(10px) solid rgb(0, 0, 0);
+                            }
+
+                            .namebox-button-arrow-right {
+                                width: 0;
+                                height: 0;
+
+                                border-top: s(8px) solid rgba(0, 0, 0, 0);
+                                border-bottom: s(8px) solid rgba(0, 0, 0, 0);
+                                border-left: s(10px) solid rgb(0, 0, 0);
+                            }
+
+
+            .sidebar-window-item-active {
+                @include sidebar-window-item;
+
+                background-color: rgb(0, 0, 128);
+            }
+
+            .sidebar-window-item {
+                @include sidebar-window-item;
+            }
+
+            .sidebar-window-item:hover {
+                cursor: pointer;
+            }
+
+                .sidebar-window-item-active-font {
+                    @include p-font;
+
+                    margin: s(6px);
+                    padding: 0;
+
+                    color: rgb(255, 255, 255);
+                }
+
+
+
+
+
+/*███████████████ MAIN ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.main-container {
+    width: calc(100vw - s(400px));
+
+    display: flex;
+    flex-direction: row-reverse;
+    flex-grow: 1;
+
+    position: relative;
+}
+
+.main-inner-container {
+    width: calc(100% - s(70px));
+    height: calc(100% - s(140px));
+    margin: s(70px) s(70px) s(70px) 0;
+
+    display: flex;
+    flex-direction: row-reverse;
+    flex-grow: 1;
+
+    position: relative;
+}
+
+.main {
+    @include window;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+    .inner-window-scroll-container {
+        width: 100%;
+        height: calc(100% - s(6px));
+        margin: 0 0 s(6px) 0;
+        padding: 0 s(8px) 0 0;
+
+        overflow-y: scroll;
+
+        pointer-events: all;
+
+        z-index: 1;
+    }
+
+    .inner-window-scroll-container::-webkit-scrollbar {
+        width: s(20px);
+    }
+
+    .inner-window-scroll-container::-webkit-scrollbar-track {
+        background-color: $main-dark;
+        border: s(4px) solid;
+        border-color: $main-dark $main-light $main-light $main-dark;
+    }
+
+    .inner-window-scroll-container::-webkit-scrollbar-thumb {
+        margin: s(4px);
+
+        border: s(4px) solid;
+        border-color: $main-light $main-dark $main-dark $main-light;
+
+        background-color: $main-normal;
+    }
+
+        .main-inner-window {
+            min-width: 0;
+            min-height: 0;
+            margin: 0;
+
+            display: flex;
+            flex-direction: column;
+
+            overflow-x: hidden;
+        }
+
+            .p-font-margin {
+                margin: s(3px) s(8px);
+                padding: s(10px) s(15px);
+
+                display: block;
+
+                position: relative;
+            }
+
+                .p-font-margin-bg {
+                    width: 100%;
+                    height: 100%;
+                    
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+
+                    background-color: $main-normal;
+
+                    z-index: 0;
+                }
+
+
+            .main-inner-window-contents {
+                margin: s(10px);
+
+                z-index: 1;
+            }
+
+            .main-inner-window-frame, .main-inner-window-frame-lower {
+                width: calc(100% - s(20px) - s(8px));
+                height: calc(100% - s(6px));
+
+                position: absolute;
+                top: 0;
+                bottom: 0;
+
+                pointer-events: none;
+                z-index: 2;
+            }
+
+            .main-inner-window-frame-lower {
+                z-index: 0;
+            }
+
+            .main-inner-window-bg, .main-inner-window-border {
+                @include window;
+
+                width: 100%;
+                height: 100%;
+
+                background-color: $white-normal;
+
+                position: absolute;
+                top: 0;
+                bottom: 0;
+
+                border-color: $main-dark $main-light $main-light $main-dark;
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            .main-inner-window-border {
+                background-color: transparent;
+            }
+
+                .main-buttons-container {
+                    display: flex;
+                    align-items: center;
+                }
+
+                    .run-button-container, .cancel-button-container {
+                        height: s(32px);
+                        margin: 0 s(4px) s(4px) s(4px);
+
+                        display: flex;
+                        align-items: flex-start;
+
+                        position: relative;
+                    }
+
+                    .cancel-button-container {
+                        flex-direction: row-reverse;
+                        align-items: flex-end;
+                    }
+
+                        .main-button, .main-button-sizer {
+                            @include button;
+
+                            position: absolute;
+                        }
+
+                        .main-button-sizer {
+                            position: static;
+
+                            opacity: 0;
+                            pointer-events: none;
+                        }
+
+                            .button-font {
+                                font-family: "Pixellari", sans-serif;
+                                font-size: s(18px);
+
+                                margin: 0 s(6px);
+
+                                user-select: none;
+                            }
+
+
+.main-sizer {
+    @include window;
+
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    display: flex;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    background-color: transparent;
+    border-color: transparent;
+    pointer-events: none;
+}
+
+.sizer {
+    opacity: 0;
+}

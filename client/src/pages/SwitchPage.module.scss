@@ -1,0 +1,219 @@
+/*███████████████ DECLARATION ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+@use "./../styles/functions" as *;
+
+
+
+$gray-light: rgb(60, 60, 60);
+$gray-normal: rgb(40, 40, 40);
+$gray-darkish: rgb(27.5, 27.5, 27.5);
+$gray-dark: rgb(20, 20, 20);
+
+$magenta-light: rgb(255, 80, 255);
+$magenta-normal: rgb(255, 0, 255);
+
+$green-normal: rgb(0, 255, 0);
+
+$transition-color: rgb(255, 255, 255);
+
+
+
+:export {
+    grayLight: $gray-light;
+    grayNormal: $gray-normal;
+    grayDarkish: $gray-darkish;
+    grayDark: $gray-dark;
+
+    magentaLight: $magenta-light;
+    magentaNormal: $magenta-normal;
+    magentaNormalA0: rgba($magenta-normal, 0);
+
+    greenNormal: $green-normal;
+    greenNormalA0: rgba($green-normal, 0);
+
+    transitionColor: $transition-color;
+    transitionColorA0: rgba($transition-color, 0)
+}
+
+
+
+/*███████████████ GENERAL ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.container-bg {
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgb(0, 0, 0);
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: $gray-normal;
+}
+
+
+
+/*███████████████ UPPER CONTENT ██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.upper-content {
+    width: 100%;
+    min-height: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex: 1 1 0;
+}
+
+    .DMA-logo {
+        height: 40%;
+        aspect-ratio: 1;
+
+        margin: 0;
+
+        color: $gray-dark;
+    }
+
+
+
+/*███████████████ SWITCH █████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.switch-container {
+    width: 100%;
+    height: s(60px);
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+    .switch-inner-container {
+        height: 100%;
+        aspect-ratio: 2;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .switch, .wave-element {
+        height: 100%;
+        aspect-ratio: 2;
+
+        display: flex;
+        align-items: center;
+
+        background-color: $magenta-normal;
+        box-shadow: 0 0 s(20px) rgba($transition-color, 0);
+        border-radius: s(15px);
+
+        z-index: 4;
+    }
+
+    .switch:hover {
+        cursor: pointer;
+    }
+
+        .switch-thumb {
+            height: calc(100% - s(10px));
+            aspect-ratio: 1;
+            margin: s(5px);
+
+            background-color: $gray-normal;
+            border-radius: 25%;
+        }
+
+    .wave-element {
+        aspect-ratio: 1;
+
+        z-index: 3;
+    }
+
+
+
+/*███████████████ LOWER CONTENT ██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.lower-content {
+    width: 100%;
+    min-height: 0;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    flex: 1 1 0;
+}
+
+    .h1 {
+        margin: 0;
+
+        color: $gray-dark;
+        font-family: "Sono", sans-serif;
+        font-size: s(50px);
+        font-weight: 700;
+    }
+
+
+    .return-button-container {
+        margin: s(10px) 0 0 0;
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+
+        position: relative;
+    }
+
+    .return-button, .return-button-placeholder {
+        display: flex;
+        flex-direction: row-reverse;
+
+        position: absolute;
+        box-sizing: border-box;
+        
+        background-color: $gray-dark;
+        border: s(3px) solid $gray-dark;
+        border-radius: s(10px);
+
+        overflow: hidden;
+    }
+
+    .return-button-placeholder {
+        position: static;
+        
+        opacity: 0;
+
+        z-index: -1;
+    }
+
+    .return-button:hover {
+        cursor: pointer;
+    }
+
+    .return-button:active {
+        background-color: $gray-normal;
+    }
+
+        .return-button-p {
+            margin: s(5px) s(7px);
+
+            color: $gray-normal;
+            font-family: "Sono", sans-serif;
+            font-size: s(25px);
+            font-weight: 600;
+
+            white-space: pre;
+
+            user-select: none;
+        }
+
+        .return-button:active .return-button-p {
+            color: $gray-dark;
+        }

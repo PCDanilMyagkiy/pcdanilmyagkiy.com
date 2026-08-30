@@ -1,0 +1,417 @@
+/*███████████████ DECLARATION ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+@use "./../styles/functions" as *;
+
+
+
+$main-normal: rgb(0, 0, 0);
+
+$white-normal: rgb(255, 255, 255);
+
+$red-normal: rgb(255, 0, 0);
+$red-light: rgb(255, 90, 90);
+
+
+
+:export {
+    mainNormal: $main-normal;
+
+
+    whiteNormal: $white-normal;
+    whiteNormalA0: rgba($white-normal, 0);
+
+
+    redNormal: $red-normal;
+
+    redLight: $red-light;
+}
+
+
+
+/*███████████████ GENERAL ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.scoller-container {
+    width: 100%;
+    height: 100%;
+}
+
+    .outer-container {
+        width: 100vw;
+        height: 100vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: $main-normal;
+    }
+
+        .container {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            position: absolute;
+
+            background-color: $main-normal;
+        }
+
+        .container-overlayer {
+            width: 100%;
+            height: 100%;
+
+            background-color: rgb(255, 255, 255);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+            .scene-container {
+                width: 100%;
+                height: 100%;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                
+                position: absolute;
+
+                opacity: 0;
+            }
+
+
+
+/*███████████████ SCENE 1 ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.logo-outer-container {
+    width: s(500px);
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+    .logo-container {
+        width: s(500px);
+        height: s(500px);
+
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+        position: relative;
+    }
+
+        .logo-part, .logo-part-overlayer, .logo-part-pyramid {
+            width: 100%;
+            height: 100%;
+
+            position: absolute;
+            color: $white-normal;
+            z-index: 2;
+        }
+
+        .logo-part-overlayer {
+            color: $main-normal;
+            z-index: 1;
+        }
+
+        .logo-part-pyramid {
+            z-index: 0;
+        }
+
+
+    .logo-overlayer, .logo-spacer {
+        flex-grow: 1;
+
+        z-index: 1;
+    }
+
+    .logo-overlayer {
+        display: flex;
+        justify-content: center;
+
+        background-color: $main-normal;
+    }
+
+    .logo-p {
+        margin: 0;
+
+        color: $white-normal;
+        font-size: s(28px);
+        font-family: "Zen Dots";
+        z-index: 15;
+    }
+
+
+
+/*███████████████ SCENE 2 ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.scene-2-p-1 {
+    margin: 0;
+
+    color: $red-light;
+
+    font-size: s(40px);
+    font-family: "Noto Serif";
+    font-weight: 400;
+}
+
+.scene-2-p-2 {
+    margin: 0;
+
+    color: $white-normal;
+
+    font-size: s(140px);
+    font-family: "League Gothic", sans-serif;
+    font-weight: 500;
+}
+
+
+
+/*███████████████ SCENE 3 ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.scene-3-text-container {
+    display: flex;
+    justify-content: center;
+
+    position: relative;
+}
+
+    .scene-3-text-container-sizer {
+        opacity: 0;
+
+        pointer-events: none;
+    }
+
+
+    .scene-3-text-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        position: absolute;
+    }
+
+        .scene-3-small-text-container {
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .scene-3-p-1 {
+                margin: 0;
+
+                display: block;
+
+                color: $white-normal;
+                font-size: s(75px);
+                font-family: "Limelight", sans-serif;
+                font-weight: 500;
+            }
+
+            .scene-3-p-2 {
+                margin: 0;
+
+                display: block;
+
+                color: $red-light;
+                font-size: s(84px);
+                font-family: "IBM Plex Mono", monospace;
+                font-weight: 600;
+                will-change: transform;
+            }
+
+
+        .scene-3-big-text-container {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+            .scene-3-p-3 {
+                margin: s(25px) 0 0 0;
+                color: $white-normal;
+
+                font-size: s(580px);
+                line-height: s(480px);
+                font-family: "Geist Mono", "IBM Plex Mono", monospace;
+                font-weight: 1000;
+                writing-mode: vertical-lr;
+                white-space: pre;
+            }
+
+
+
+/*███████████████ SCENE 4 ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.scene-4-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+    .scene-4-p-1, .scene-4-p-1-sizer {
+        margin: 0;
+
+        color: $red-light;
+        font-size: s(250px);
+        line-height: s(225px);
+        font-weight: 500;
+        font-family: "Monoton", "Bungee", "Jaro";
+    }
+
+    .scene-4-p-1-sizer {
+        opacity: 0;
+    }
+
+
+.scene-4-logo-container {
+    width: fit-content;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+}
+
+    .scene-4-logo-inner-container {
+        width: fit-content;
+        height: fit-content;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .scene-4-logo, .scene-4-logo-lr {
+            width: s(200px);
+            height: s(200px);
+
+            color: $white-normal;
+        }
+        
+        .scene-4-logo-lr {
+            position: absolute;
+            top: 0;
+
+            color: $red-light;
+        }
+
+        .scene-4-logo-p-container {
+            display: flex;
+        }
+
+            .scene-4-logo-p {
+                margin: 0;
+
+                position: relative;
+
+                color: $white-normal;
+                font-family: sans-serif;
+                font-size: s(30px);
+                font-weight: 700;
+            }
+
+                .scene-4-logo-p-lr {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+
+                    color: $red-light;
+                }
+
+                .scene-4-logo-p-accent, .scene-4-logo-p-accent-sizer {
+                    opacity: 0;
+                    color: $red-light;
+                    font-family: "Train One", "Anton", sans-serif;
+                    font-size: s(40px);
+                    line-height: s(30px);
+                    font-weight: 500;
+                }
+
+                .scene-4-logo-p-accent {
+                    opacity: 1;
+
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                }
+
+
+
+/*███████████████ SCENE 5 ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.scene-5-p-1 {
+    margin: 0;
+
+    position: absolute;
+    bottom: 100%;
+
+    color: $white-normal;
+    font-size: s(62px);
+    font-family: "Bungee", sans-serif;
+    line-height: s(100px);
+    white-space: pre;
+}
+
+.scene-5-p-2 {
+    margin: 0;
+
+    position: absolute;
+    top: 100%;
+
+    color: $white-normal;
+    font-size: s(70px);
+    line-height: s(75px);
+    font-family: "Climate Crisis";
+    white-space: pre;
+}
+
+
+
+/*███████████████ SCENE 6 ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.scene-6-p {
+    margin: 0;
+
+    color: $red-light;
+    font-size: s(100px);
+    font-family: "Share Tech Mono", monospace;
+    font-weight: 700;
+    z-index: 1;
+}
+
+
+
+/*███████████████ SCENE 7 ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.scene-7-p {
+    margin: 0;
+
+    color: $white-normal;
+    opacity: 0.3;
+    font-size: s(450px);
+    font-family: "Anton", monospace;
+    font-weight: 500;
+    filter: blur(s(10px));
+    pointer-events: none;
+    z-index: 0;
+}

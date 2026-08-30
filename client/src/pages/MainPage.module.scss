@@ -1,0 +1,142 @@
+$win-bg-color: rgb(220, 220, 200);
+
+@mixin win-window {
+    background-color: $win-bg-color;
+    border: 4px solid;
+    border-color: rgb(255, 255, 245) rgb(165, 165, 150) rgb(165, 165, 150) rgb(255, 255, 245);
+}
+
+@mixin win-button {
+    @include win-window;
+
+    margin: 4px;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:active {
+        padding: 4px 0 0 4px;
+
+        border-style: solid none none solid;
+        border-color: rgb(165, 165, 150) $win-bg-color $win-bg-color rgb(165, 165, 150);
+    }
+}
+
+
+
+.container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    justify-content: flex-start;
+
+    background-color: rgb(0, 0, 0);
+}
+
+
+
+        .win-namebox {
+            width: 100%;
+            height: 40px;
+
+            display: flex;
+
+            background: linear-gradient(90deg, rgba(0, 0, 128, 1), rgba(0, 0, 80, 0.2));
+        }
+
+            .win-namebox-text-container {
+                display: flex;
+                flex-grow: 1;
+                align-items: center;
+            }
+
+                .win-namebox-font {
+                    margin: 0 0 0 8px;
+                    padding: 0;
+
+                    color: $win-bg-color;
+                    font-family: sans-serif;
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+
+            .win-namebox-buttons-container {
+                width: 76px;
+                height: 100%;
+                
+                display: flex;
+            }
+
+                .win-namebox-button {
+                    @include win-button;
+
+                    width: 24px;
+                    height: 24px;
+                }
+
+                .win-namebox-button:last-child {
+                    margin: 4px 4px 4px 0;
+                }
+
+                    .win-namebox-button-arrow-left {
+                        width: 0;
+                        height: 0;
+
+                        border-top: 8px solid rgba(0, 0, 0, 0);
+                        border-bottom: 8px solid rgba(0, 0, 0, 0);
+                        border-right: 10px solid rgb(0, 0, 0);
+                    }
+
+                    .win-namebox-button-arrow-right {
+                        width: 0;
+                        height: 0;
+
+                        border-top: 8px solid rgba(0, 0, 0, 0);
+                        border-bottom: 8px solid rgba(0, 0, 0, 0);
+                        border-left: 10px solid rgb(0, 0, 0);
+                    }
+        
+
+
+        .win-sidebar-window {
+            @include win-window;
+            
+            margin: 8px 4px 4px 4px;
+
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+
+            background-color: rgb(255, 255, 255);
+            border-color: rgb(165, 165, 150) rgb(255, 255, 245) rgb(255, 255, 245) rgb(165, 165, 150);
+            white-space: pre;
+        }
+
+                
+
+
+
+
+
+
+
+        .win-main-buttons-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .win-button {
+            @include win-button;
+
+            width: fit-content;
+            height: 24px;
+        }

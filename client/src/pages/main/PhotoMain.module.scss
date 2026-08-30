@@ -1,0 +1,265 @@
+/*███████████████ DECLARATION ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+@use "./../../styles/functions" as *;
+
+
+
+$bg-normal: rgb(4, 6, 10);
+$bg-light: rgb(12, 18, 30);
+
+$accent-normal: rgb(60, 120, 255);
+
+
+
+:export {
+    bgNormal: $bg-normal;
+    bgLight: $bg-light;
+
+    accentNormal: $accent-normal;
+}
+
+
+
+
+
+/*███████████████ GENERAL ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.container {
+    width: 100vw;
+    height: 100vh;
+
+    background-color: $bg-normal;
+}
+
+
+    .inner-container {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        justify-content: flex-end;
+
+        position: relative;
+    }
+
+
+
+
+
+/*███████████████ BG █████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.bg-photo-container {
+    max-width: 50%;
+    height: 100%;
+
+    position: relative;
+}
+
+.bg-photo {
+    height: 100%;
+}
+
+.bg-photo-overlay {
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 2;
+}
+
+
+
+
+
+/*███████████████ BUTTONS ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.buttons-container {
+    width: 100%;
+    height: s(50px);
+
+    display: flex;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    z-index: 3;
+}
+
+    .button, .button-selected {
+        width: 14vw;
+        height: 80%;
+        margin: 0 0 0 s(20px);
+
+        display: flex;
+        flex-direction: column;
+
+        position: relative;
+
+        background-color: $bg-light;
+        overflow: hidden;
+    }
+
+    .button:hover {
+        cursor: pointer;
+    }
+
+    .button-selected {
+        height: 100%;
+
+        background-color: $accent-normal;
+    }
+
+        .button-contents {
+            flex-grow: 1;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .button-p, .button-selected-p {
+                margin: 0;
+
+                color: $accent-normal;
+                font-size: s(18px);
+                font-weight: 600;
+                font-family: "Share Tech Mono", sans-serif;
+            }
+
+            .button-selected-p {
+                color: $bg-light;
+            }
+
+
+        .button-stripe {
+            width: 100%;
+            height: s(2px);
+
+            position: absolute;
+            bottom: 0;
+
+            background-color: $accent-normal;
+        }
+
+
+
+
+
+/*███████████████ CONTENTS ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.contents-container {
+    margin: s(50px) 0 0 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+    .header-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .header-h1 {
+            margin: 0;
+
+            color: $accent-normal;
+            font-size: s(70px);
+            font-family: "Anton", sans-serif;
+        }
+
+        .header-h2 {
+            margin: 0;
+
+            color: $accent-normal;
+            font-size: s(22px);
+            font-weight: 600;
+            font-family: "Roboto Mono", sans-serif;
+        }
+
+    
+    .paragraph-container {
+        padding: s(40px) s(150px);
+        margin: s(40px) 0 0 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        position: relative;
+    }
+
+        .paragraph-bg-container {
+            width: 100%;
+            height: 100%;
+
+            position: absolute;
+        }
+
+            .paragraph-bg {
+                width: 100%;
+                height: 100%;
+
+                display: block;
+
+                color: $bg-light;
+            }
+
+
+        .paragraph-h {
+            margin: s(10px) 0 s(20px) 0;
+
+            color: $accent-normal;
+            font-family: "Iosevka Charon Mono", sans-serif;
+            font-size: s(20px);
+            font-weight: 600;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .linkbox-container {
+            position: relative;
+        }
+
+            .linkbox, .linkbox-inverse, .linkbox-sizer {
+                margin: s(5px) 0;
+
+                display: flex;
+
+                position: absolute;
+                box-sizing: border-box;
+
+                background-color: $bg-normal;
+                border: s(3px) solid $bg-normal;
+                overflow: hidden;
+                z-index: 2;
+            }
+
+            .linkbox-inverse {
+                flex-direction: row-reverse;
+
+                right: 0;
+            }
+
+            .linkbox-sizer {
+                position: static;
+
+                opacity: 0;
+            }
+
+                .linkbox-font {
+                    margin: s(10px) s(15px);
+
+                    color: $accent-normal;
+                    font-family: "Roboto Mono";
+                    font-size: s(16px);
+                    white-space: pre;
+                }

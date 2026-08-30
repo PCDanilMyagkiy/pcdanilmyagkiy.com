@@ -1,0 +1,81 @@
+/*███████████████ DECLARATION ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+@use "./../styles/functions" as *;
+
+
+
+$main-color: rgb(165, 255, 165);
+$main-color-light: rgb(255, 255, 255);
+
+
+:export {
+    mainColor: $main-color;
+    mainColorLight: $main-color-light;
+}
+
+
+
+/*███████████████ MAIN ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    background-color: black;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-placeholder {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-container {
+    width: 100%;
+    height: fit-content;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .p, .scroll-placeholder-p {
+        height: s(21px);
+        margin: 0;
+
+        font-size: s(16px);
+        font-family: monospace;
+        color: $main-color;
+
+        filter: drop-shadow(0 0 s(10px) $main-color);
+
+        white-space: pre;
+    }
+
+    .p, .scroll-placeholder-p:hover {
+        cursor: text;
+    }
+
+    .return-button {
+        height: s(22px);
+
+        display: inline-block;
+    }
+
+    .return-button:hover {
+        cursor: pointer;
+    }

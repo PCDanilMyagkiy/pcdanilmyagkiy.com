@@ -1,0 +1,297 @@
+/*███████████████ DECLARATION ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+@use "./../styles/functions" as *;
+
+
+
+$main-normal: rgb(10, 10, 10);
+
+
+$cyan-normal: rgb(0, 255, 255);
+$cyan-dark: rgb(20, 125, 125);
+
+$cyan-transition: rgb(160, 255, 255);
+
+
+$red-normal: rgb(255, 0, 0);
+$red-dark: rgb(125, 20, 20);
+
+$red-transition: rgb(255, 160, 160);
+
+
+$transition-normal: rgb(255, 255, 255);
+$transition-dark: rgb(125, 125, 125);
+
+
+
+:export {
+    mainNormal: $main-normal;
+
+
+
+    cyanNormal: $cyan-normal;
+    cyanNormalA025: rgba($cyan-normal, 0.25);
+    cyanNormalA0: rgba($cyan-normal, 0);
+
+    cyanDark: $cyan-dark;
+    
+    cyanTransition: $cyan-transition;
+    
+
+
+    redNormal: $red-normal;
+    redNormalA025: rgba($red-normal, 0.25);
+    redNormalA0: rgba($red-normal, 0);
+
+    redDark: $red-dark;
+
+    redTransition: $red-transition;
+
+
+
+    transitionNormal: $transition-normal;
+    transitionNormalA0: rgba($transition-normal, 0);
+
+    transitionDark: $transition-dark;
+    transitionDarkA0: rgba($transition-dark, 0);
+}
+
+
+
+/*███████████████ GENERAL ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $main-normal;
+}
+
+    .content-window {
+        width: s(1200px);
+        height: s(500px);
+
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content-window-bg {
+        width: 100%;
+        height: 100%;
+        
+        position: absolute;
+
+        background: linear-gradient(105deg, $cyan-normal, $transition-normal, $red-normal);
+
+        mask-image: url("./../assets/CtrlGearPage/ContentWindowMask.svg");
+        --webkit-mask-image: url('path-to-your-shape.svg');
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        --webkit-mask-size: contain;
+        --webkit-mask-repeat: no-repeat;
+        --webkit-mask-position: center;
+    }
+
+
+
+/*███████████████ HEADER █████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.header-container {
+    width: calc(100% - s(40px));
+    margin: s(20px);
+
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+    .header {
+        margin: s(5px) s(20px);
+
+        color: $main-normal;
+
+        font-size: s(24px);
+        font-family: "Bungee", sans-serif;
+        font-weight: 700;
+
+        z-index: 1;
+    }
+
+    .return-button-container {
+        width: s(105px);
+        height: s(35px);
+        margin: 0 s(5px);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .return-button {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: linear-gradient(105deg, $red-transition, $red-normal);
+            border-radius: s(17.5px);
+            z-index: 1;
+        }
+
+        .return-button:hover {
+            cursor: pointer;
+        }
+
+            .return-button-p {
+                margin: 0;
+
+                color: $main-normal;
+                font-family: "Bungee", sans-serif;
+                font-size: s(14px);
+            }
+
+
+/*███████████████ SLIDER █████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.slider-container {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 5 1 0;
+}
+
+    .track-container {
+        width: calc(100% - s(100px));
+        height: s(100px);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: relative;
+    }
+
+        .track-inner-container {
+            width: calc(100% - s(100px) + s(10px));
+            height: s(10px);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .track {
+                width: 100%;
+                height: 100%;
+
+                border-radius: s(5px);
+                background: linear-gradient(105deg, $cyan-dark, $transition-dark, $red-dark);
+            }
+
+            .gear-sprite {
+                width: s(100px);
+                height: s(100px);
+
+                position: absolute;
+                left: 0;
+
+                color: $cyan-normal;
+            }
+
+
+
+/*███████████████ BUTTONS ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.buttons-container {
+    width: 100%;
+    height: s(160px);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .buttons-inner-container {
+        width: calc(100% - s(150px));
+        height: calc(100% - s(50px));
+
+        display: flex;
+        align-items: center;
+    }
+        .button-container-big, .button-container {
+            height: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            flex: 2 1 0;
+        }
+
+        .button-container-big {
+            margin: 0 s(30px);
+
+            flex: 4 1 0;
+        }
+
+
+
+        .reverse-button, .restart-button, .pause-button {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: s(25px);
+
+            z-index: 1;
+        }
+
+        .reverse-button:hover, .restart-button:hover, .pause-button:hover {
+            cursor: pointer;
+        }
+
+        .reverse-button {
+            background: linear-gradient(105deg, $cyan-normal, $cyan-transition);
+        }
+
+        .restart-button {
+            background: linear-gradient(105deg, $red-transition, $red-normal);
+        }
+
+        .pause-button {
+            background: linear-gradient(105deg, $cyan-transition, $transition-normal, $red-transition);
+        }
+
+            .button-icon, .button-icon-small, .button-icon-small-invisible {
+                width: s(35px);
+                height: s(35px);
+
+                color: $main-normal;
+            }
+
+            .button-icon-small, .button-icon-small-invisible {
+                width: s(30px);
+                height: s(30px);
+            }
+
+            .button-icon-small-invisible {
+                position: absolute;
+
+                opacity: 0;
+            }

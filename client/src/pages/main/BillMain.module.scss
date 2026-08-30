@@ -1,0 +1,822 @@
+/*███████████████ DECLARATION ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+@use "./../../styles/functions" as *;
+
+$device-color-light: rgb(180, 175, 140);
+$device-color-dark: rgb(140, 135, 100);
+$device-color-outline: rgb(80, 75, 40);
+
+
+@mixin font-block {
+    width: calc(100% - s(20px));
+    height: s(35px);
+    margin: 0;
+    padding: 0 s(10px) 0 s(10px);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+@mixin sidebar-texture {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.015),
+            rgba(0, 0, 0, 0.015) s(2px),
+            rgba(0, 0, 0, 0.03) s(4px),
+            rgba(0, 0, 0, 0.03) s(6px),
+            
+            rgba(0, 0, 0, 0.015),
+            rgba(0, 0, 0, 0.015) s(1px),
+            rgba(0, 0, 0, 0.03) s(2px),
+            rgba(0, 0, 0, 0.03) s(3px),
+
+            rgba(0, 0, 0, 0.015),
+            rgba(0, 0, 0, 0.015) s(2px),
+            rgba(0, 0, 0, 0.03) s(4px),
+            rgba(0, 0, 0, 0.03) s(6px),
+
+            rgba(0, 0, 0, 0.015),
+            rgba(0, 0, 0, 0.015) s(1px),
+            rgba(0, 0, 0, 0.03) s(3px),
+            rgba(0, 0, 0, 0.03) s(4px),
+
+            rgba(0, 0, 0, 0.015),
+            rgba(0, 0, 0, 0.015) s(2px),
+            rgba(0, 0, 0, 0.03) s(3px),
+            rgba(0, 0, 0, 0.03) s(5px),
+        ),
+
+        repeating-linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.01),
+            rgba(0, 0, 0, 0.01) s(1px),
+            rgba(0, 0, 0, 0.02) s(2px),
+            rgba(0, 0, 0, 0.02) s(3px),
+
+            rgba(0, 0, 0, 0.01),
+            rgba(0, 0, 0, 0.01) s(2px),
+            rgba(0, 0, 0, 0.02) s(4px),
+            rgba(0, 0, 0, 0.02) s(6px),
+
+            rgba(0, 0, 0, 0.01),
+            rgba(0, 0, 0, 0.01) s(3px),
+            rgba(0, 0, 0, 0.02) s(5px),
+            rgba(0, 0, 0, 0.02) s(7px),
+
+            rgba(0, 0, 0, 0.01),
+            rgba(0, 0, 0, 0.01) s(1px),
+            rgba(0, 0, 0, 0.02) s(3px),
+            rgba(0, 0, 0, 0.02) s(4px),
+
+            rgba(0, 0, 0, 0.01),
+            rgba(0, 0, 0, 0.01) s(1px),
+            rgba(0, 0, 0, 0.02) s(2px),
+            rgba(0, 0, 0, 0.02) s(3px),
+        );
+    opacity: 0.6;
+    mix-blend-mode: multiply;
+    z-index: 3;
+}
+
+@mixin main-texture {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background-color: rgb(0, 0, 0);
+    background-image: url("./../../assets/MainPage/BillMain/paperTextureBgTile.png");
+    opacity: 0.4;
+    mix-blend-mode: overlay;
+    z-index: 3;
+}
+
+@mixin shadow {
+    filter: drop-shadow(s(5px) s(5px) s(7.5px) rgba(0, 0, 0, 0.5))
+            drop-shadow(s(10px) s(10px) s(7.5px) rgba(0, 0, 0, 0.3));
+}
+
+@mixin document-folder-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+
+
+
+/*███████████████ GENERAL ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    justify-content: flex-start;
+
+    background-color: rgb(0, 0, 0);
+    background-image: url("./../../assets/MainPage/BillMain/woodTableBgTile.png");
+    overflow: hidden;
+}
+
+
+
+
+
+/*███████████████ SIDEBAR ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.sidebar-container {
+    width: s(300px);
+    height: 100%;
+    margin: 0 0 0 s(100px);
+
+    display: flex;
+    justify-content: center;
+
+    position: relative;
+}
+
+.sidebar-container-lower {
+    @include shadow;
+
+    width: calc(100% - s(40px));
+    height: s(800px);
+    margin: s(80px) 0 0 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-container-lower::after {
+    @include sidebar-texture;
+}
+
+.cutPaperEdge {
+    z-index: 2;
+}
+
+.sidebar {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: rgb(220, 220, 200);
+    box-shadow: 0 s(5px) 0 0 rgb(220, 220, 200),
+                0 s(-5px) 0 0 rgb(220, 220, 200);
+    z-index: 2;
+}
+
+    .placeholder-font-blocks-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        flex: 1 1 0;
+
+        flex-grow: 1;
+    }
+
+    .font-block, .placeholder-font-block {
+        @include font-block;
+        
+    }
+
+    .font-block:nth-child(n + 5):nth-child(-n + 9):hover {
+        cursor: pointer;
+    }
+
+    .font-block-small {
+        @include font-block;
+
+        height: s(5px);
+    }
+
+    .font-block-aligner {
+        flex-grow: 1;
+    }
+
+    .font-block-lower {
+        width: s(35px);
+        height: 100%;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .font-block-lower:hover {
+        cursor: pointer;
+    }
+
+    .typewriter-p {
+        color: rgb(20, 20, 0);
+        font-family: "Cutive", sans-serif;
+        font-size: s(16px);
+        font-weight: 700;
+
+        white-space: pre-wrap;
+    }
+
+    .font-block-lower .typewriter-p {
+        margin: 0;
+        padding: 0;
+
+        font-size: s(23px);
+    }
+
+
+
+
+
+/*███████████████ MAIN ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.main-container {
+    margin: 0 s(100px) 0 s(25px);
+    padding: 0;
+
+    flex-grow: 1;
+
+    position: relative;
+}
+
+.main {
+    @include shadow;
+
+    width: calc(100% - s(80px));
+    height: calc(100% - s(40px));
+    margin: s(20px) s(40px) s(20px) s(40px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--main-background);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.main::after {
+    @include main-texture;
+}
+
+.main-inner {
+    width: calc(100% - s(20px));
+    height: calc(100% - s(20px));
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: rgb(220, 220, 200);
+
+    overflow: hidden;
+
+    filter: contrast();
+}
+
+    .main-inner-aligner-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+    }
+
+    .input-container {
+        width: 100%;
+        height: fit-content;
+        margin: s(10px) 0 s(20px) 0;
+
+        position: relative;
+        
+        display: flex;
+        flex-direction: column;
+    }
+
+    .input-container:last-child {
+        margin: 0 0 s(10px) 0;
+    }
+
+        .main-header-container {
+            width: 100%;
+            height: s(50px);
+
+            display: flex;
+            align-items: center;
+        }
+
+        .main-header {
+            margin: 0 0 s(10px) s(10px);
+
+            color: rgb(220, 220, 200);
+            font-family: "IBM Plex Mono", monospace;
+            font-weight: 800;
+            font-size: s(32px);
+        }
+
+        .main-h2-container {
+            width: calc(100% - s(20px));
+            height: s(40px);
+            padding: 0 0 0 s(20px);
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .main-h2-bg {
+            width: 300%;
+            height: 100%;
+
+            position: absolute;
+            left: -100%;
+
+            background: linear-gradient(90deg, rgb(from var(--main-h2-gradient) r g b / 0), var(--main-h2-gradient) 33%, var(--main-h2-gradient), rgb(from var(--main-h2-gradient) r g b / 0));
+        }
+
+        .main-h2 {
+            margin: 0;
+
+            color: rgb(20, 20, 0);
+            font-family: "IBM Plex Mono", monospace;
+            font-size: s(20px);
+            font-weight: 600;
+        }
+
+        .main-p-container {
+            width: calc(100% - s(20px));
+            height: fit-content;
+            padding: 0 0 0 s(20px);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .main-p, .checkbox-p {
+            margin: s(10px) 0 0 0;
+
+            font-family: "IBM Plex Mono", monospace;
+            font-size: s(14px);
+            font-weight: 700;
+        }
+
+        /*----------Checkboxes----------*/
+
+        .checkboxes-container {
+            width: 100%;
+            height: s(50px);
+            
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .checkbox-container {
+            height: 100%;
+            width: fit-content;
+            margin: 0 s(30px) 0 s(20px);
+
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .checkbox, .checkbox-button {
+                width: s(20px);
+                height: s(20px);
+                margin: 0 s(10px) 0 0;
+
+                position: relative;
+
+                border: s(2.5px) solid rgb(20, 20, 0);
+            }
+
+            .checkbox-button {
+                width: fit-content;
+                margin: 0 0 0 s(10px);
+                padding: 0 s(5px);
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .checkbox:hover, .checkbox-button:hover {
+                cursor: pointer;
+            }
+
+                .tick {
+                    width: s(25px);
+                    height: s(25px);
+
+                    position: absolute;
+                    bottom: s(2px);
+                    left: s(2px);
+
+                    user-select: none;
+                }
+
+                .eyeIcon {
+                    width: s(20px);
+                    height: s(20px);
+
+                    user-select: none;
+                }
+
+                .checkbox-p {
+                    margin: s(2px) 0 0 0;
+                }
+
+
+        /*----------Input----------*/
+
+        .input {
+            width: calc(100% - s(40px));
+            height: s(10px);
+            margin: 0;
+            padding: s(20px);
+
+            color: rgb(0, 0, 75);
+            background-color: rgb(220, 220, 200);
+            border: 0;
+
+            font-family: "Caveat", sans-serif;
+            font-size: s(24px);
+            font-weight: 600;
+        }
+
+        .input:focus {
+            border: 0;
+            outline: 0;
+        }
+
+        .input-underline {
+            width: calc(100% - s(40px));
+            height: s(2px);
+            margin: 0 s(20px) 0 s(20px);
+
+            position: absolute;
+            top: s(72px);
+
+            background-color: var(--main-h2-gradient);
+        }
+
+
+
+
+
+
+/*███████████████ OVERLAY ████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████*/
+
+.device-p {
+    margin: 0;
+    padding: 0;
+
+    color: $device-color-outline;
+
+    font-family: "IBM Plex Mono", sans-serif;
+    font-weight: 900;
+    font-size: s(20px);
+}
+
+.indicator {
+    width: s(4px);
+    height: s(4px);
+
+    background-color: rgb(20, 20, 0);
+    border-radius: s(5px);
+    border: s(2px) dashed rgba(255, 255, 255, 0.1);
+}
+
+
+
+.main-deactivator {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+
+    z-index: 7;
+}
+
+.sidebar-deactivator {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+
+    z-index: 7;
+}
+
+.typewriter3000 {
+    width: s(550px);
+    height: s(160px);
+    
+    position: absolute;
+    top: s(116px);
+    left: s(-600px);
+
+    overflow: hidden;
+    outline: s(4px) solid $device-color-outline;
+    border-radius: 0 s(10px) s(10px) 0;
+    box-shadow: 0 0 s(10px) rgb(0, 0, 0),
+                s(4px) s(4px) s(10px) rgba(0, 0, 0, 0.3),
+                s(9px) s(9px) s(10px) rgba(0, 0, 0, 0.3),
+                s(14px) s(14px) s(10px) rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+    .typewriter3000-window-container {
+        width: 100%;
+        height: s(110px);
+
+        display: flex;
+        flex-direction: row-reverse;
+
+        box-shadow: inset 0 s(33px) 0 0 $device-color-light,
+                    inset s(-53px) 0 0 0 $device-color-light,
+                    inset 0 s(-33px) 0 0 $device-color-light,
+                    inset s(203px) 0 0 0 $device-color-light;
+
+        z-index: 2;
+    }
+
+    .typewriter3000-window {
+        width: s(300px);
+        height: s(50px);
+        margin: s(30px) s(50px) 0 0;
+
+        background: linear-gradient(60deg, rgba(200, 200, 255, 0.3), rgba(255, 255, 200, 0.05) 25%, rgba(200, 200, 255, 0.3)),
+                    linear-gradient(-20deg, rgba(0, 0, 0, 0) 65%, rgba(200, 200, 255, 0.6));
+        border-radius: s(10px);
+        backdrop-filter: blur(s(0.8px));
+        box-shadow: inset 0 0 0 s(4px) $device-color-outline,
+                    inset 0 0 s(10px) s(5px) rgba(200, 200, 255, 0.3);
+
+        z-index: 2;
+    }
+
+    .typewriter3000-window-scroller {
+        width: s(24px);
+        height: s(50px);
+
+        position: absolute;
+        right: s(296px);
+        top: s(30px);
+        
+        background-color: rgb(40, 40, 0);
+
+        z-index: 0;
+    }
+
+    .typewriter3000-content {
+        width: calc(100% + s(4px));
+        height: s(54px);
+
+        display: flex;
+        flex-direction: row-reverse;
+
+        background-color: $device-color-dark;
+        box-shadow: inset 0 0 0 s(4px) $device-color-outline;
+        z-index: 5;
+        overflow: hidden;
+    }
+
+        .typewriter3000-inner-content {
+            max-width: s(300px);
+            margin: 0 s(54px) 0 0;
+
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .typewriter3000-indicator-container {
+            width: s(16px);
+            height: s(16px);
+            margin: 0 s(13px) 0 s(5px);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: $device-color-outline;
+            border-radius: s(8px);
+        }
+
+
+
+.document-folder {
+    width: s(1400px);
+    height: s(915px);
+    margin: 0 s(50px) 0 0;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.document-folder-content {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+}
+
+    .document-folder-bg-upper {
+        @include shadow;
+        @include document-folder-bg;
+
+        width: 100%;
+        height: 100%;
+
+        z-index: 4;
+    }
+
+    .document-folder-bg-lower {
+        @include document-folder-bg;
+
+        width: 100%;
+        height: 100%;
+
+        filter: drop-shadow(s(1px) s(1px) rgba(0, 0, 0, 0.3))
+                drop-shadow(s(4px) s(4px) rgba(0, 0, 0, 0.3));
+
+        z-index: -1;
+    }
+
+    .document-folder-upper {
+        width: 100%;
+        height: 100%;
+
+        position: relative;
+    }
+
+    .document-folder-p {
+        position: absolute;
+        bottom: s(200px);
+        left: s(-30px);
+
+        color: rgb(0, 0, 0);
+        font-family: "Cutive", sans-serif;
+        font-size: s(30px);
+        z-index: 5;
+
+        transform: rotate(-90deg);
+    }
+
+
+
+.shredder {
+    width: s(1395px);
+    height: s(150px);
+
+    position: absolute;
+    bottom: s(-154px);
+    
+    background-color: $device-color-light;
+    outline: s(4px) solid $device-color-outline;
+    border-radius: s(10px) s(10px) 0 0;
+    box-shadow: 0 0 s(10px) rgb(0, 0, 0),
+                s(4px) s(4px) s(10px) rgba(0, 0, 0, 0.3),
+                s(9px) s(9px) s(10px) rgba(0, 0, 0, 0.3),
+                s(14px) s(14px) s(10px) rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    z-index: 6;
+}
+
+    .shredder-textbox {
+        width: 100%;
+        height: s(54px);
+        padding: 0 0 0 s(20px);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        background-color: $device-color-dark;
+        border-bottom: s(4px) solid $device-color-outline;
+    }
+
+        .shredder-indicator-container {
+            width: s(16px);
+            height: s(16px);
+            margin: 0 s(40px) 0 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: $device-color-outline;
+            border-radius: s(8px);
+        }
+
+
+
+.sticker-container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.sticker {
+    width: s(600px);
+    height: s(600px);
+
+    position: relative;
+
+    z-index: 5;
+}
+
+    .sticker-bg {
+        @include shadow;
+
+        width: 100%;
+        height: 100%;
+
+        position: absolute;
+
+        user-select: none;
+    }
+
+    .sticker-contents {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: absolute;
+    }
+
+    .sticker-contents-inner {
+        margin: s(40px);
+
+        flex-grow: 1;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .sticker-p {
+            margin: 0;
+            padding: 0;
+
+            font-size: s(25px);
+            font-weight: 600;
+            font-family: "Delius Swash Caps", cursive;
+        }
+
+        .sticker-contents-text {
+            margin: 0 0 s(30px) 0;
+            padding: 0;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sticker-contents-buttons {
+            width: 100%;
+            height: s(60px);
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+            .sticker-contents-button {
+                width: s(90px);
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .sticker-contents-button:hover {
+                cursor: pointer;
+            }

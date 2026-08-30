@@ -1,0 +1,33 @@
+{
+  "name": "pcdanil_myagkiy.com",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@reduxjs/toolkit": "^2.9.1",
+    "axios": "^1.12.2",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "gsap": "^3.13.0",
+    "jsonwebtoken": "^9.0.3",
+    "lenis": "^1.3.25",
+    "mongodb": "^6.21.0",
+    "mongoose": "^9.0.2",
+    "nodemailer": "^9.0.1",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.9.4",
+    "sass": "^1.93.2",
+    "zod": "^4.4.3"
+  }
+}
