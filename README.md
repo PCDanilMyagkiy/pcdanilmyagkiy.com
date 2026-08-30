@@ -1,4 +1,4 @@
-# pcdanilmyagkiy.com - Personal portfolio project build with the MERN stack and more
+# pcdanilmyagkiy.com - Personal portfolio project built with the MERN stack and more
 
 
 
@@ -20,10 +20,12 @@
 - Express
 - MongoDB
 - Mongoose
-- JsonWebToken
+- CORS
+- cookie-parser
+- JSON Web Token
 - bcrypt
 - Zod
-- Node Mailer
+- Nodemailer
 
 
 
@@ -32,11 +34,11 @@
 - Authentication
 - Email verification
 - JWT-based authentication
-- Calculator histories
-- Account editing (name, email, password)
-- Email-based traffic limiting
-- IP-based traffic limiting
-- Manual IP ban
+- Calculator history
+- Account management (changing name, email and password)
+- Per-email rate limiting
+- IP-based rate limiting
+- Manual IP banning
 
 
 
