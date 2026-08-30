@@ -605,7 +605,9 @@ const Win95Main = forwardRef((props, ref) => {
                                         <div className={styles["main-inner-window-contents"]} ref={mainInnerContentsRef}>
                                             <p className={styles["p-font"]}>You have just seen the introductory animation sequence, but if you want to watch it again, click the <span className={styles["p-font-bold"]}>"Run"</span> button at the bottom of this window.</p>
                                             <p className={styles["p-font"]}> </p>
-                                            <p className={styles["p-font"]}>Before we dive into the projects themselves, here's a quick overview of the technologies I work with:</p>
+                                            <p className={styles["p-font"]}>Notice that the project is open-source (MIT License), if you're interested in source code - you can access GitHub repo from the Contacts page.</p>
+                                            <p className={styles["p-font"]}> </p>
+                                            <p className={styles["p-font"]}>Before we dive in, here's a quick overview of the technologies I work with:</p>
                                             <p className={styles["p-font"]}> </p>
                                             <p className={styles["p-font"]}> </p>
                                             <p className={styles["p-font"]}>The foundation of my stack is <span className={styles["p-font-bold"]}>MERN</span> - a popular <span className={styles["p-font-bold"]}>JavaScript</span> ecosystem for building modern full-stack web applications. It consists of:</p>

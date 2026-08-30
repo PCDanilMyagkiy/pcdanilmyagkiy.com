@@ -271,15 +271,21 @@ const PhotoMain = forwardRef((props, ref) => {
         },
 
         {
-            text: "github.com/PCDanilMyagkiy",
+            text: "GitHub profile",
             link: "https://github.com/PCDanilMyagkiy",
+            external: 1
+        },
+
+        {
+            text: "Open-source project repo",
+            link: "https://github.com/PCDanilMyagkiy/pcdanilmyagkiy.com",
             external: 1
         },
 
         {
             text: "No LinkedIn yet",
             link: "https://github.com/PCDanilMyagkiy",
-            external: 0
+            external: 1
         },
     ];
 
