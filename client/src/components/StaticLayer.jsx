@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 
-import styles from "./staticLayer.module.scss";
+import styles from "./StaticLayer.module.scss";
 
 import { useScale } from "./../utils/useScale.js";
 
