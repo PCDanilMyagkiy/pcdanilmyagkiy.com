@@ -245,8 +245,19 @@ export function makeAccountsService() {
             ipLimiter.codesSent++;
             await ipLimiter.save();
 
+            
+            const expireDate = new Date();
+            expireDate.setMinutes(expireDate.getMinutes() + 5);
 
-            sendVerCode(verificationCode, email);
+            const expireHours = String(expireDate.getHours()).padStart(2, "0");
+            const expireMinutes = String(expireDate.getMinutes()).padStart(2, "0");
+            const expireDay = String(expireDate.getDate()).padStart(2, "0");
+            const expireMonth = String((expireDate.getMonth() + 1)).padStart(2, "0");
+            const expireYear = expireDate.getFullYear();
+
+            const expiresAt = `${expireHours}:${expireMinutes} ${expireDay}.${expireMonth}.${expireYear}`;
+
+            sendVerCode(verificationCode, email, expiresAt);
 
             return {
                 log: "verifCodeSuccess"
