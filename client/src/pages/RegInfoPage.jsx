@@ -4,7 +4,7 @@ import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useNavigate } from "react-router-dom";
 
-import { fetchRefresh } from "../utils/fetchRefresh.js";
+import apiFetch from "../utils/apiFetch.js";
 
 
 import Lenis from "lenis";
@@ -525,7 +525,7 @@ const RegInfoPage = () => {
 
         (async() => {
             try {
-                account.current = await fetchRefresh("/api/accounts/profile/", {
+                account.current = await apiFetch("/api/accounts/profile/", "refresh", {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json"

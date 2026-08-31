@@ -29,7 +29,7 @@ import { useEffect, forwardRef, useImperativeHandle, useState, useRef } from "re
 import { gsap } from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 
-import { fetchRefresh } from "./../../utils/fetchRefresh.js";
+import apiFetch from "./../../utils/apiFetch.js";
 
 
 import styles from "./BillMain.module.scss";
@@ -177,7 +177,7 @@ const BillMain = forwardRef((props, ref) => {
         let account = null;
 
         try {
-            account = await fetchRefresh("/api/accounts/profile", {
+            account = await apiFetch("/api/accounts/profile", "refresh", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
@@ -599,7 +599,7 @@ const BillMain = forwardRef((props, ref) => {
 
     async function getAccounts() {
         try {
-            const res = await fetch("/api/accounts");
+            const res = await apiFetch("/api/accounts", "normal");
 
             if (!res.ok) {
                 throw new Error("Network response was not ok");
@@ -627,7 +627,7 @@ const BillMain = forwardRef((props, ref) => {
             }
 
 
-            const response = await fetch("/api/accounts/create", {
+            const response = await apiFetch("/api/accounts/create", "normal", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -657,7 +657,7 @@ const BillMain = forwardRef((props, ref) => {
 
     async function logInFunction() {
         if ((nameInput || emailInput) && (passwordInput || verifCodeInput)) {
-            const response = await fetch("/api/accounts/login", {
+            const response = await apiFetch("/api/accounts/login", "normal", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -707,7 +707,7 @@ const BillMain = forwardRef((props, ref) => {
         }
 
 
-        const response = await fetchRefresh("/api/accounts/apply-changes", {
+        const response = await apiFetch("/api/accounts/apply-changes", "refresh", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -747,7 +747,7 @@ const BillMain = forwardRef((props, ref) => {
     }
 
     async function deleteAccount() {
-        const response = await fetchRefresh("/api/account/delete", {
+        const response = await apiFetch("/api/account/delete", "refresh", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -772,7 +772,7 @@ const BillMain = forwardRef((props, ref) => {
             return destroyBlank("verifCodeFailNoEmail");
         }
 
-        const response = await fetch("/api/accounts/code/generate", {
+        const response = await apiFetch("/api/accounts/code/generate", "normal", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -1276,7 +1276,7 @@ const BillMain = forwardRef((props, ref) => {
     }
 
     async function logOut() {
-        const response = await fetch("/api/accounts/logOut", {
+        const response = await apiFetch("/api/accounts/logOut", "normal", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -1,5 +1,4 @@
 import { useEffect, useLayoutEffect, useState, useRef } from "react";
-import { gsap } from "gsap";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./MainPage.module.scss";

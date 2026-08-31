@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import { SplitText } from "gsap/SplitText";
 
-import { fetchRefresh } from "../utils/fetchRefresh.js";
+import apiFetch from "../utils/apiFetch.js";
 
 import styles from "./CalculatorPage.module.scss";
 
@@ -771,7 +771,7 @@ export default function CalculatorPage() {
 
     async function getCalculatorHistory() {
         try {
-            const res = await fetch("/api/calculator-histories/get-history", {
+            const res = await apiFetch("/api/calculator-histories/get-history", "normal", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -1199,7 +1199,7 @@ export default function CalculatorPage() {
     async function addHistoryItem(historyItem) {
         historyInitialized.current = 1;
 
-        const res = await fetch("/api/calculator-histories/add-history-item", {
+        const res = await apiFetch("/api/calculator-histories/add-history-item", "normal", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -1230,7 +1230,7 @@ export default function CalculatorPage() {
         animateHistoryChange(new Array(history.length).fill(0));
 
 
-        const res = await fetch("/api/calculator-histories/add-history-item", {
+        const res = await apiFetch("/api/calculator-histories/add-history-item", "normal", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -1265,7 +1265,7 @@ export default function CalculatorPage() {
         const newHistory = currentHistoryDocument.history.toSpliced(index, 1);
 
         
-        const res = await fetch("/api/calculator-histories/add-history-item", {
+        const res = await apiFetch("/api/calculator-histories/add-history-item", "normal", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -1295,7 +1295,7 @@ export default function CalculatorPage() {
                 if (hasRun.current) return;
                 hasRun.current = 1;
 
-                account.current = await fetchRefresh("/api/accounts/profile/", {
+                account.current = await apiFetch("/api/accounts/profile/", "refresh", {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json"

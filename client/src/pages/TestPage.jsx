@@ -4,8 +4,6 @@ import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useNavigate } from "react-router-dom";
 
-
-
 import styles from "./TestPage.module.scss";
 
 import { s } from "./../utils/scale.js";
