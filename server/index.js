@@ -47,9 +47,10 @@ async function logIntoAccount(req, res) {
 
 app.use(cors({
     origin: [
+        "https://pcdanilmyagkiy.com",
+        "https://pcdanilmyagkiy.netlify.app",
         `http://localhost:${process.env.PORT}`,
-        "http://localhost:8080",
-        "https://pcdanilmyagkiy.netlify.app"
+        "http://localhost:8080"
     ],
     credentials: true,
 }));
