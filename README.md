@@ -79,7 +79,7 @@ Uses shared Zod Schemas for frontend/backend validation to keep it consistent an
 
 ## Environment Variables
 
-See ".env.example"
+See "client/.env.example" and "server/.env.example".
 
 
 
