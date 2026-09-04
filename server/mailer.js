@@ -7,7 +7,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const sendVerCode = async (code, to, expiresAt) => {
     const { data, error } = await resend.emails.send({
-        from: `"PCDanil_Myagkiy's portfolio project" <onboarding@resend.dev>`,
+        from: `"PCDanil_Myagkiy" <dma@pcdanilmyagkiy.com>`,
         to,
         subject: "Confirm your email",
         text: "Confirm your email",
