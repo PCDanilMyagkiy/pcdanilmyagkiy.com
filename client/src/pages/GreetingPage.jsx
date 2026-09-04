@@ -408,7 +408,7 @@ export default function GreetingPage() {
                 { x: () => s(120), y: () => s(-200), duration: 1.4, ease: "power1.inOut" },
             "<+0.2")
             .fromTo(logoRefA.current,
-                { x: () => s(80), y: () => s(130) },
+                { x: () => s(80), y: () => s(-70) },
                 { x: () => s(-10), y: () => s(-20), duration: 1.1, ease: "power1.inOut" },
             "<+0.1")
 
@@ -441,10 +441,20 @@ export default function GreetingPage() {
                 { opacity: 0, duration: 0.6, ease: "power1.in", stagger: 0.05 },
             "<")
 
-            .fromTo([scene3SmallTextContainerSizerRef.current, scene3SmallTextContainerRef.current],
-                { height: () => s(170) },
+            .fromTo(scene3SmallTextContainerSizerRef.current,
+                { height: () => 170 },
                 { height: 0, duration: 1.8, ease: "power1.inOut" },
             "0")
+
+            .fromTo(scene3SmallTextContainerRef.current,
+                { yPercent: 0 },
+                { yPercent: -100, duration: 1.8, ease: "power1.inOut" },
+            "<")
+
+            .fromTo(scene3BigTextContainerRef.current,
+                { y: 0 },
+                { y: () => -2 * scene3SmallTextContainerRef.current.getBoundingClientRect().width, duration: 1.8, ease: "power1.inOut" },
+            "<")
 
             .fromTo(scene3p3n1SplitTextRef.current.chars,
                 { opacity: 1, filter: "blur(0px)" },
@@ -998,37 +1008,37 @@ export default function GreetingPage() {
 
         const sceneTls = [
             {
-                height: 1200,
+                height: 600,
                 tl: scene1Tl
             },
 
             {
-                height: 2000,
+                height: 900,
                 tl: scene2Tl
             },
 
             {
-                height: 5000,
+                height: 2700,
                 tl: scene3Tl
             },
 
             {
-                height: 5800,
+                height: 3000,
                 tl: scene4Tl
             },
 
             {
-                height: 2400,
+                height: 1200,
                 tl: scene5Tl
             },
 
             {
-                height: 2400,
+                height: 1200,
                 tl: scene6Tl
             },
 
             {
-                height: 2600,
+                height: 1400,
                 tl: scene7Tl
             }
         ];
@@ -1480,7 +1490,7 @@ export default function GreetingPage() {
 
 
 
-                    <StaticLayer opacity={0.5} className={styles["static-layer"]} />
+                    <StaticLayer opacity={0.8} className={styles["static-layer"]} />
                 </div>
             </div>
         </div>
