@@ -29,14 +29,14 @@ async function logIntoAccount(req, res) {
             .cookie("access", loginResponse.accessToken, {
                 httpOnly: true,
                 secure: true,
-                sameSite: "Strict",
+                sameSite: "Lax",
                 maxAge: 1000 * 60 * 15
             })
 
             .cookie("refresh", loginResponse.refreshToken, {
                 httpOnly: true,
                 secure: true,
-                sameSite: "Strict",
+                sameSite: "Lax",
                 maxAge: 1000 * 60 * 60 * 24 * 14
             });
     }
@@ -99,14 +99,14 @@ app.post("/api/accounts/refresh", async(req, res) => {
         return res
             .cookie("access", newAccess, {
                 httpOnly: true,
-                secure: false,
-                sameSite: "Strict",
+                secure: true,
+                sameSite: "Lax",
                 maxAge: 1000 * 60 * 15
             })
             .cookie("refresh", newRefresh, {
                 httpOnly: true,
-                secure: false,
-                sameSite: "Strict",
+                secure: true,
+                sameSite: "Lax",
                 maxAge: 1000 * 60 * 60 * 24 * 14
             })
 
