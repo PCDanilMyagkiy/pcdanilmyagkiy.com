@@ -11,11 +11,7 @@ export async function fetchRefresh(url, options = {}) {
 
     let response = await ogFetch();
 
-    console.log(response);
-
     if (response.fail === "needRefresh") {
-        console.log(`${API_URL}/api/accounts/refresh`);
-
         const refreshResponse = await fetch(`${API_URL}/api/accounts/refresh`, {
             method: "POST",
             headers: {
