@@ -885,8 +885,8 @@ const BillMain = forwardRef((props, ref) => {
         switch (stickerTextContent) {
             case "userConsent":
                 mainText = [
-                    "Would you really like to destroy the blank?",
-                    "(Erases all the data in it)"
+                    "Are you sure you want to destroy this blank?",
+                    "This will delete all the data on it."
                 ];
                 okayButtonText = "Sure";
                 noButtonText = "Cancel";
@@ -987,17 +987,18 @@ const BillMain = forwardRef((props, ref) => {
                 mainText = [
                     "Failed to send the verification code,",
                     "there are too many requests.",
-                    `Try again in ${verifCodeTimeLeft} seconds`
+                    `Try again in ${verifCodeTimeLeft} seconds.`
                 ];
                 noButtonText = "Okay";
                 break;
 
             case "verifCodeSuccess":
                 mainText = [
-                    `The code is sent to ${emailInput.split("").length <= 20 ? emailInput : emailInput.split("").slice(0, 17).join("") + "..."}`,
-                    "It expires in 5 minutes",
-                    "You have 5 attempts",
-                    "You can send 10 codes in 24 hours per email"
+                    `The code is sent to ${emailInput.split("").length <= 20 ? emailInput : emailInput.split("").slice(0, 17).join("") + "..."}.`,
+                    "It may be in spam.",
+                    "It expires in 5 minutes.",
+                    "You have 5 attempts.",
+                    "You can send 10 codes per 24 hours per email."
                 ];
                 noButtonText = "Okay";
                 break;
@@ -1006,7 +1007,7 @@ const BillMain = forwardRef((props, ref) => {
                 mainText = [
                     "The verification code is incorrect.",
                     "You've reached max attempts on this code,",
-                    "it has expired, please generate a new one"
+                    "it has expired, please generate a new one."
                 ];
                 noButtonText = "Okay";
                 break;
@@ -1015,7 +1016,7 @@ const BillMain = forwardRef((props, ref) => {
                 mainText = [
                     "You've sent too many codes (10 per email).",
                     `Wait for ${verifCodeFailTooManyCodesGetTime()}`,
-                    "to send new ones to this email"
+                    "to send new ones to this email."
                 ];
                 noButtonText = "Okay";
                 break;
@@ -1030,10 +1031,9 @@ const BillMain = forwardRef((props, ref) => {
 
             case "verifCodeFailIpBlacklisted":
                 mainText = [
-                    "Whoops! Looks like I've blocked your IP",
-                    "address due to suspicious activity. If you",
-                    "want to appeal, please contact me at",
-                    "|MY CONTACTS|"
+                    "Your IP address has been blocked due to",
+                    "suspicious activity. To appeal, contact",
+                    "dma@pcdanilmyagkiy.com"
                 ];
                 noButtonText = "Okay";
                 break;
@@ -1051,7 +1051,7 @@ const BillMain = forwardRef((props, ref) => {
                 mainText = [
                     "You can set a new password after logging in.",
                     "To log in without it, use your account email",
-                    "and a verification code"
+                    "and a verification code."
                 ];
                 noButtonText = "Okay";
                 break;
@@ -1059,11 +1059,11 @@ const BillMain = forwardRef((props, ref) => {
             case "renderInstructions":
                 mainText = [
                     "On this page you can:",
-                    "Change your account name or password",
-                    "Log out or delete your account",
+                    "Change your account name or password.",
+                    "Log out or delete your account.",
                     "-----------------------------------------------",
-                    "The log out button is next to the \"Email\" field",
-                    "Destroy account is a tickbox at the bottom",
+                    "The log out button is next to the \"Email\" field.",
+                    "Destroy account is a tickbox at the bottom.",
                 ];
                 noButtonText = "Okay";
                 break;
@@ -1072,9 +1072,9 @@ const BillMain = forwardRef((props, ref) => {
 
             case "logOutWarning":
                 mainText = [
-                    "Are you really sure you want to log out?"
+                    "Are you sure you want to log out?"
                 ];
-                okayButtonText = "Yes";
+                okayButtonText = "Log out";
                 noButtonText = "No";
                 okayButtonFunction = async () => await logOut()
                 break;
@@ -1084,23 +1084,23 @@ const BillMain = forwardRef((props, ref) => {
             case "applyChangesFail":
                 mainText = [
                     "Your password and verification code",
-                    "were incorrect, try again"
+                    "were incorrect, try again."
                 ];
                 noButtonText = "Okay";
                 break;
 
             case "applyChangesNoChanges":
                 mainText = [
-                    "Neither new name or password were",
-                    "provided, there is nothing to change"
+                    "Neither new name nor password was",
+                    "provided, there is nothing to change."
                 ];
                 noButtonText = "Okay";
                 break;
 
             case "applyChangesSuccess":
                 mainText = [
-                    "Applied changes on",
-                    `your account's ${appliedChangesOn}.`
+                    "Applied changes on your account's",
+                    `${appliedChangesOn}.`
                 ];
                 okayButtonText = "Proceed";
                 break;
@@ -1108,11 +1108,11 @@ const BillMain = forwardRef((props, ref) => {
 
             case "deleteAccount":
                 mainText = [
-                    "Are you really sure that you want to",
+                    "Are you really sure you want to",
                     "permanently delete your account?",
                     "This is irreversible."
                 ];
-                okayButtonText = "Yes";
+                okayButtonText = "Delete";
                 noButtonText = "Cancel";
                 okayButtonFunction = async () => await deleteAccount();
                 break;
@@ -1183,7 +1183,7 @@ const BillMain = forwardRef((props, ref) => {
             case "inputValidationFail_password_too_small":
                 mainText = [
                     "Provided password was too short.",
-                    "Minimal length is 8 characters"
+                    "Minimal length is 8 characters."
                 ];
                 noButtonText = "Okay";
                 break;
@@ -1191,7 +1191,7 @@ const BillMain = forwardRef((props, ref) => {
             case "inputValidationFail_password_too_big":
                 mainText = [
                     "Provided password was too long.",
-                    "Maximal length is 120 characters"
+                    "Maximal length is 120 characters."
                 ];
                 noButtonText = "Okay";
                 break;
@@ -1212,15 +1212,15 @@ const BillMain = forwardRef((props, ref) => {
                         : "✓ It contains a digit."
                     }`,
                     "To be valid it needs to contain",
-                    "at least a one of each"
+                    "at least one of each."
                 ];
                 noButtonText = "Okay";
                 break;
             
             case "inputValidationFail_server_fail":
                 mainText = [
-                    "Provided credentials were",
-                    "not approved on server side."
+                    "Provided credentials were not",
+                    "approved on by the server side."
                 ];
                 noButtonText = "Okay";
                 break;
