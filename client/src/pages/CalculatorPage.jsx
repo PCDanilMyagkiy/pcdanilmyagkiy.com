@@ -1307,6 +1307,8 @@ export default function CalculatorPage() {
                     account.current = 0;
                     return;
                 }
+
+                await getCalculatorHistory();
             } catch (err) {
                 console.error(err);
             }
