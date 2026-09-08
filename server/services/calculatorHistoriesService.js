@@ -7,7 +7,9 @@ export function makeCalculatorHistoriesService() {
         async getCalculatorHistory(userId) {
             const calculatorHistory = await CalculatorHistoriesModel.findOne({ userId });
 
-            return calculatorHistory;
+            return calculatorHistory
+                ? calculatorHistory
+                : { history: [] }
         },
 
         async setHistory({ userId, history }) {
