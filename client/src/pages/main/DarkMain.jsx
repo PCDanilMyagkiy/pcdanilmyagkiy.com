@@ -111,7 +111,7 @@ const DarkMain = forwardRef((props, ref) => {
         gsap.set(sidebarMarginEvenRefs.current, { x: "-66.67%" })
         gsap.set(sidebarMarginOddRefs.current, { x: "66.67%" })
         gsap.set(sidebarBlockRefs.current, { x: "-100%", opacity: 0 })
-        gsap.set(sidebarBlockActiveRef.current, { backgroundColor: styles.bgNeutral.replace(")", ", 0)") })
+        gsap.set(sidebarBlockActiveRef.current, { backgroundColor: styles.bgNeutralA0 })
 
 
         gsap.set(mainContainerRef.current, { xPercent: 100 });
@@ -256,7 +256,7 @@ const DarkMain = forwardRef((props, ref) => {
                 .to(sidebarBlockRefs.current, { x: s(15), opacity: 1, ease: "power1.out", stagger: 0.15, duration: 0.45 }, "<+0.2")
                 .to(sidebarBlockRefs.current, { x: 0, ease: "power1.inOut", stagger: 0.15, duration: 0.4 }, "<+0.45")
 
-                .to(sidebarBlockActiveRef.current, { backgroundColor: styles.bgNeutral, ease: "power1.out", duration: 0.4 }, "<+0.8")
+                .to(sidebarBlockActiveRef.current, { opacity: 1, backgroundColor: styles.bgNeutral, ease: "power1.out", duration: 0.4 }, "<+0.8")
 
 
 
@@ -728,7 +728,7 @@ const DarkMain = forwardRef((props, ref) => {
 
 
     const mapSidebarBlocks = () => {
-        return sidebarBlocks.map((sidebarBlock, id) => {
+        return sidebarBlocks.map((sidebarBlock) => {
             if (sidebarBlock.margin) {
                 return (
                     <div className={styles["sidebar-block-margin"]} key={sidebarBlock.id} />
