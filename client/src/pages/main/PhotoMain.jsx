@@ -283,8 +283,8 @@ const PhotoMain = forwardRef((props, ref) => {
         },
 
         {
-            text: "No LinkedIn yet",
-            link: "https://github.com/PCDanilMyagkiy",
+            text: "Fiverr",
+            link: "https://www.fiverr.com/users/pcdanil_myagkiy",
             external: 1
         },
     ];
